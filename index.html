@@ -52,8 +52,8 @@ input:focus,select:focus{border-color:#4f46e5}
 <!-- Printer Info -->
 <div class="info-box">
   <strong>🖨️ TVS LP46 Neo — 6 ips Desktop Thermal Printer · 203 DPI</strong>
-  Layout: <b>3-Column Roll</b> · Label Size: <b>34 × 22mm</b> · Roll Width: <b>110mm</b> · Core: ½" &amp; 1" · Up to 300m
-  <br>Movable black-mark sensor · USB interface · Print head life ~30km.
+  Layout: <b>3-Column Roll</b> · Label Size: <b>35 × 25mm</b> · Roll Width: <b>113mm</b> · Core: ½" &amp; 1" · Up to 300m
+  <br>Format: Brand / Product · <b>MRP: ₹___</b> · <b>Part No: ___</b> · Large QR (~14mm) at bottom.
   <br>QR codes rendered at <b>203 DPI</b> with high-contrast pixel enhancement — optimized for direct thermal print.
 </div>
 
@@ -66,7 +66,7 @@ input:focus,select:focus{border-color:#4f46e5}
     <div><label>Item Code *</label><input id="f-code" placeholder="e.g. 54321"/></div>
   </div>
   <div class="row">
-    <div><label>NET Price (₹) *</label><input id="f-price" type="number" step="0.01" placeholder="500.00"/></div>
+    <div><label>MRP (₹) *</label><input id="f-price" type="number" step="0.01" placeholder="500.00"/></div>
     <div><label>No. of Labels</label><input id="f-qty" type="number" value="1" min="1" max="500"/></div>
     <div style="display:flex;align-items:flex-end"><button class="btn btn-primary" style="width:100%" onclick="addItem()">+ Add</button></div>
   </div>
@@ -92,9 +92,9 @@ input:focus,select:focus{border-color:#4f46e5}
   <div style="margin-bottom:12px">
     <label style="margin-bottom:6px">Quick Presets:</label>
     <div class="preset-row">
-      <button class="preset-btn active" onclick="applyPreset('34x22')">34×22mm (3up Roll) ★</button>
+      <button class="preset-btn active" onclick="applyPreset('35x25')">35×25mm (3up Roll) ★</button>
+      <button class="preset-btn" onclick="applyPreset('34x22')">34×22mm (3up Roll)</button>
       <button class="preset-btn" onclick="applyPreset('38x25')">38×25mm (3up Roll)</button>
-      <button class="preset-btn" onclick="applyPreset('35x25')">35×25mm (3up Roll)</button>
       <button class="preset-btn" onclick="applyPreset('50x25')">50×25mm (2up Roll)</button>
       <button class="preset-btn" onclick="applyPreset('40x30')">40×30mm (2up Roll)</button>
       <button class="preset-btn" onclick="applyPreset('custom')">✏️ Custom</button>
@@ -102,15 +102,15 @@ input:focus,select:focus{border-color:#4f46e5}
   </div>
 
   <div class="printer-grid">
-    <div><label>Paper Width (mm)</label><input id="p-paperw" type="number" value="110"/></div>
-    <div><label>Label Width (mm)</label><input id="p-w" type="number" value="34"/></div>
-    <div><label>Label Height (mm)</label><input id="p-h" type="number" value="22"/></div>
+    <div><label>Paper Width (mm)</label><input id="p-paperw" type="number" value="113"/></div>
+    <div><label>Label Width (mm)</label><input id="p-w" type="number" value="35"/></div>
+    <div><label>Label Height (mm)</label><input id="p-h" type="number" value="25"/></div>
     <div><label>Horizontal Gap (mm)</label><input id="p-hgap" type="number" value="2"/></div>
     <div><label>Vertical Gap (mm)</label><input id="p-vgap" type="number" value="2"/></div>
     <div><label>Columns</label><input id="p-cols" type="number" value="3" min="1" max="10"/></div>
     <div><label>Left Margin (mm)</label><input id="p-ml" type="number" value="2"/></div>
     <div><label>Top Margin (mm)</label><input id="p-mt" type="number" value="2"/></div>
-    <div><label>QR Size (mm)</label><input id="p-qrsize" type="number" value="10"/></div>
+    <div><label>QR Size (mm)</label><input id="p-qrsize" type="number" value="14"/></div>
   </div>
 
   <div style="margin-top:12px">
@@ -141,11 +141,11 @@ var items=[], serial=0;
 
 /* ── Presets — all roll-based for TVS LP46 Neo thermal ── */
 var PRESETS={
-  '34x22'   :{paperW:110, lW:34,   lH:22,   hGap:2,   vGap:2,   cols:3, mL:2,   mT:2,    qr:10},
-  '38x25'   :{paperW:120, lW:38,   lH:25,   hGap:3,   vGap:3,   cols:3, mL:1.5, mT:3,    qr:11},
-  '35x25'   :{paperW:113, lW:35,   lH:25,   hGap:2,   vGap:2,   cols:3, mL:2,   mT:2,    qr:11},
-  '50x25'   :{paperW:110, lW:50,   lH:25,   hGap:2,   vGap:2,   cols:2, mL:4,   mT:2,    qr:13},
-  '40x30'   :{paperW:90,  lW:40,   lH:30,   hGap:2,   vGap:2,   cols:2, mL:3,   mT:3,    qr:14},
+  '35x25'   :{paperW:113, lW:35,   lH:25,   hGap:2,   vGap:2,   cols:3, mL:2,   mT:2,    qr:14},
+  '34x22'   :{paperW:110, lW:34,   lH:22,   hGap:2,   vGap:2,   cols:3, mL:2,   mT:2,    qr:12},
+  '38x25'   :{paperW:120, lW:38,   lH:25,   hGap:3,   vGap:3,   cols:3, mL:1.5, mT:3,    qr:14},
+  '50x25'   :{paperW:110, lW:50,   lH:25,   hGap:2,   vGap:2,   cols:2, mL:4,   mT:2,    qr:15},
+  '40x30'   :{paperW:90,  lW:40,   lH:30,   hGap:2,   vGap:2,   cols:2, mL:3,   mT:3,    qr:17},
 };
 
 function applyPreset(key){
@@ -294,12 +294,12 @@ async function generatePreview(){
   var cardH=Math.round(s.labelH*SCALE);
   var hGapPx=Math.round(s.hGap*SCALE);
   var vGapPx=Math.round(s.vGap*SCALE);
-  var qrDisp=Math.min(Math.round(s.qrMM*SCALE),cardH-Math.round(cardH*0.55),Math.round(cardW*0.55));
-  qrDisp=Math.max(qrDisp,16);
-  var brandFS=Math.max(7,Math.min(13,Math.round(s.labelH*SCALE*0.09)));
-  var nameFS=Math.max(6,Math.min(11,Math.round(s.labelH*SCALE*0.07)));
-  var priceFS=Math.max(7,Math.min(13,Math.round(s.labelH*SCALE*0.085)));
-  var codeFS=Math.max(5,Math.min(9,Math.round(s.labelH*SCALE*0.065)));
+  var qrDisp=Math.min(Math.round(s.qrMM*SCALE),Math.round(cardH*0.62),Math.round(cardW*0.7));
+  qrDisp=Math.max(qrDisp,20);
+  var brandFS=Math.max(7,Math.min(12,Math.round(s.labelH*SCALE*0.08)));
+  var nameFS=Math.max(6,Math.min(10,Math.round(s.labelH*SCALE*0.06)));
+  var priceFS=Math.max(6,Math.min(11,Math.round(s.labelH*SCALE*0.07)));
+  var codeFS=Math.max(5,Math.min(9,Math.round(s.labelH*SCALE*0.06)));
 
   var col=0, rowDiv=null;
 
@@ -320,16 +320,18 @@ async function generatePreview(){
 
     var lb=list[i];
     var dataURL=await renderQR(lb.item.code,qrPx);
-    var priceStr='NET Rs.:'+parseFloat(lb.item.price).toLocaleString('en-IN',{minimumFractionDigits:2})+'/-';
+    var priceStr='MRP: ₹'+parseFloat(lb.item.price).toLocaleString('en-IN',{minimumFractionDigits:2});
 
     var cell=document.createElement('div');
-    cell.style.cssText='width:'+cardW+'px;height:'+cardH+'px;border:1px solid #333;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:space-evenly;text-align:center;overflow:hidden;padding:2px;flex-shrink:0;';
+    cell.style.cssText='width:'+cardW+'px;height:'+cardH+'px;border:1px solid #333;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center;overflow:hidden;padding:3px 2px;flex-shrink:0;';
     cell.innerHTML=
-      '<div style="font-size:'+brandFS+'px;font-weight:700;color:#000;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:96%">'+lb.item.brand+'</div>'+
-      '<div style="font-size:'+nameFS+'px;color:#333;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:96%">'+lb.item.name+'</div>'+
-      '<div style="font-size:'+priceFS+'px;font-weight:700;color:#000;line-height:1.1">'+priceStr+'</div>'+
-      (dataURL?'<img src="'+dataURL+'" style="width:'+qrDisp+'px;height:'+qrDisp+'px;image-rendering:pixelated">':'')+
-      '<div style="font-size:'+codeFS+'px;color:#444;font-family:monospace">'+lb.item.code+'</div>';
+      '<div style="width:96%">'+
+        '<div style="font-size:'+brandFS+'px;font-weight:700;color:#000;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+lb.item.brand+'</div>'+
+        '<div style="font-size:'+nameFS+'px;color:#333;white-space:nowrap;overflow:hidden;text-overflow:ellipsis">'+lb.item.name+'</div>'+
+        '<div style="font-size:'+priceFS+'px;font-weight:700;color:#000;line-height:1.15">'+priceStr+'</div>'+
+        '<div style="font-size:'+codeFS+'px;color:#000;font-family:monospace">Part No: '+lb.item.code+'</div>'+
+      '</div>'+
+      (dataURL?'<img src="'+dataURL+'" style="width:'+qrDisp+'px;height:'+qrDisp+'px;image-rendering:pixelated">':'');
     rowDiv.appendChild(cell);
 
     col++;
@@ -352,17 +354,23 @@ async function generatePreview(){
 function drawLabel(doc,cx,cy,s,lb,dataURL){
   var pad=0.8, usableW=s.labelW-pad*2, cX=cx+s.labelW/2;
   var lH=s.labelH;
-  var brandFS=Math.min(9,  Math.max(5, lH*0.18));
-  var nameFS =Math.min(8,  Math.max(4, lH*0.14));
-  var priceFS=Math.min(9,  Math.max(5, lH*0.17));
-  var codeFS =Math.min(6.5,Math.max(4, lH*0.12));
-  var y1=cy+pad+brandFS*0.35+1.5;
-  var y2=y1+brandFS*0.35+2.2;
-  var y3=y2+nameFS*0.35+2.5;
-  var qrSize=Math.min(s.qrMM, lH-(y3-cy)-codeFS*0.35-2, s.labelW*0.52);
+  var brandFS=Math.min(8,  Math.max(5, lH*0.15));
+  var nameFS =Math.min(7,  Math.max(4, lH*0.115));
+  var priceFS=Math.min(8,  Math.max(5, lH*0.14));
+  var codeFS =Math.min(6.5,Math.max(4, lH*0.11));
+
+  // Stacked text rows from the top
+  var y1=cy+pad+brandFS*0.35+1.2;
+  var y2=y1+brandFS*0.30+1.8;
+  var y3=y2+nameFS*0.30+1.9;
+  var y4=y3+priceFS*0.30+1.9;
+  var textBottom=y4+0.6;
+
+  // QR anchored at bottom, as large as the remaining space allows
+  var qrSize=Math.min(s.qrMM, lH-(textBottom-cy)-0.8, s.labelW*0.7);
   qrSize=Math.max(qrSize,4);
-  var y4=y3+1;
-  var yCode=cy+lH-0.8;
+  var qrY=cy+lH-qrSize-0.6;
+  var qrX=cx+(s.labelW-qrSize)/2;
 
   doc.setDrawColor(0); doc.setLineWidth(0.3);
   doc.rect(cx,cy,s.labelW,s.labelH);
@@ -374,16 +382,15 @@ function drawLabel(doc,cx,cy,s,lb,dataURL){
   doc.text(lb.item.name, cX, y2, {align:'center',maxWidth:usableW});
 
   doc.setFont('helvetica','bold'); doc.setFontSize(priceFS); doc.setTextColor(0,0,0);
-  var priceStr='NET Rs.:'+parseFloat(lb.item.price).toLocaleString('en-IN',{minimumFractionDigits:2})+'/-';
+  var priceStr='MRP: Rs.'+parseFloat(lb.item.price).toLocaleString('en-IN',{minimumFractionDigits:2});
   doc.text(priceStr, cX, y3, {align:'center',maxWidth:usableW});
 
-  if(dataURL){
-    var qrX=cx+(s.labelW-qrSize)/2;
-    try{doc.addImage(dataURL,'PNG',qrX,y4,qrSize,qrSize);}catch(e){}
-  }
+  doc.setFont('helvetica','normal'); doc.setFontSize(codeFS); doc.setTextColor(0,0,0);
+  doc.text('Part No: '+lb.item.code, cX, y4, {align:'center',maxWidth:usableW});
 
-  doc.setFont('helvetica','normal'); doc.setFontSize(codeFS); doc.setTextColor(50,50,50);
-  doc.text(lb.item.code, cX, yCode, {align:'center',maxWidth:usableW});
+  if(dataURL){
+    try{doc.addImage(dataURL,'PNG',qrX,qrY,qrSize,qrSize);}catch(e){}
+  }
 }
 
 async function generatePDF(){
@@ -432,23 +439,25 @@ async function directPrint(){
     var mTmm  = s.mTop.toFixed(2)+'mm';
     var qrSZmm= s.qrMM.toFixed(2)+'mm';
 
-    var brandPt = Math.max(5, Math.min(8,  s.labelH*0.32 / 0.353)).toFixed(1)+'pt';
-    var namePt  = Math.max(4, Math.min(7,  s.labelH*0.26 / 0.353)).toFixed(1)+'pt';
-    var pricePt = Math.max(5, Math.min(8,  s.labelH*0.30 / 0.353)).toFixed(1)+'pt';
-    var codePt  = Math.max(4, Math.min(6,  s.labelH*0.22 / 0.353)).toFixed(1)+'pt';
+    var brandPt = Math.max(5, Math.min(7.5,s.labelH*0.26 / 0.353)).toFixed(1)+'pt';
+    var namePt  = Math.max(4, Math.min(6.5,s.labelH*0.21 / 0.353)).toFixed(1)+'pt';
+    var pricePt = Math.max(5, Math.min(7.5,s.labelH*0.25 / 0.353)).toFixed(1)+'pt';
+    var codePt  = Math.max(4, Math.min(6,  s.labelH*0.20 / 0.353)).toFixed(1)+'pt';
 
     var labelsHTML='';
     for(var i=0;i<list.length;i++){
       var lb=list[i];
       var dataURL=await renderQR(lb.item.code,qrPx);
-      var priceStr='NET Rs.:'+parseFloat(lb.item.price).toLocaleString('en-IN',{minimumFractionDigits:2})+'/-';
+      var priceStr='MRP: ₹'+parseFloat(lb.item.price).toLocaleString('en-IN',{minimumFractionDigits:2});
       labelsHTML+=
         '<div class="lbl">'+
-          '<div class="brand">'+lb.item.brand+'</div>'+
-          '<div class="pname">'+lb.item.name+'</div>'+
-          '<div class="price">'+priceStr+'</div>'+
+          '<div class="txt">'+
+            '<div class="brand">'+lb.item.brand+'</div>'+
+            '<div class="pname">'+lb.item.name+'</div>'+
+            '<div class="price">'+priceStr+'</div>'+
+            '<div class="code">Part No: '+lb.item.code+'</div>'+
+          '</div>'+
           (dataURL?'<img class="qr" src="'+dataURL+'">':'')+
-          '<div class="code">'+lb.item.code+'</div>'+
         '</div>';
     }
 
@@ -480,16 +489,17 @@ async function directPrint(){
           'display:flex;'+
           'flex-direction:column;'+
           'align-items:center;'+
-          'justify-content:space-evenly;'+
+          'justify-content:space-between;'+
           'text-align:center;'+
           'overflow:hidden;'+
-          'padding:0.4mm;'+
+          'padding:0.5mm;'+
         '}'+
-        '.brand{font-size:'+brandPt+';font-weight:700;color:#000;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%;}'+
-        '.pname{font-size:'+namePt+';color:#000;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%;}'+
-        '.price{font-size:'+pricePt+';font-weight:700;color:#000;line-height:1.1;}'+
-        '.qr{width:'+qrSZmm+';height:'+qrSZmm+';image-rendering:pixelated;display:block;}'+
-        '.code{font-size:'+codePt+';color:#000;font-family:monospace;}'+
+        '.txt{width:100%;}'+
+        '.brand{font-size:'+brandPt+';font-weight:700;color:#000;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%;line-height:1.15;}'+
+        '.pname{font-size:'+namePt+';color:#000;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;width:100%;line-height:1.15;}'+
+        '.price{font-size:'+pricePt+';font-weight:700;color:#000;line-height:1.2;}'+
+        '.qr{width:'+qrSZmm+';height:'+qrSZmm+';image-rendering:pixelated;display:block;margin-bottom:0.3mm;}'+
+        '.code{font-size:'+codePt+';color:#000;font-family:monospace;line-height:1.15;}'+
         '@media print{'+
           '*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;}'+
         '}'+
